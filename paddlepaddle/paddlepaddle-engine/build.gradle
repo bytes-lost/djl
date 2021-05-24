@@ -7,7 +7,7 @@ dependencies {
         exclude group: "junit", module: "junit"
     }
     testImplementation "org.slf4j:slf4j-simple:${slf4j_version}"
-    testRuntimeOnly "ai.djl.paddlepaddle:paddlepaddle-native-cu102:${paddlepaddle_version}"
+    testRuntimeOnly "ai.djl.paddlepaddle:paddlepaddle-native-auto:${paddlepaddle_version}"
 }
 
 processResources {
@@ -18,7 +18,7 @@ processResources {
                 "${djl_version}/linux-x86_64/cpu/libdjl_paddle.so"         : "linux-x86_64/cpu/libdjl_paddle.so",
                 "${djl_version}/osx-x86_64/cpu/libdjl_paddle.dylib"        : "osx-x86_64/cpu/libdjl_paddle.dylib",
                 "${djl_version}/win-x86_64/cpu/djl_paddle.dll"             : "win-x86_64/cpu/djl_paddle.dll",
-                "${djl_version}/linux-x86_64/cu102/libdjl_paddle.so"         : "linux-x86_64/cu102/libdjl_paddle.so",
+                "${djl_version}/linux-x86_64/cu102/libdjl_paddle.so"       : "linux-x86_64/cu102/libdjl_paddle.so",
         ]
         def classesDir = "${project.buildDir}/jnilib"
         files.each { entry ->
