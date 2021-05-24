@@ -44,7 +44,11 @@ task compileJNI {
         } else if (System.properties['os.name'].toLowerCase(Locale.ROOT).contains("mac")) {
             downloadBuild("osx", "cpu")
         } else if (System.properties['os.name'].toLowerCase(Locale.ROOT).contains("linux")) {
-            downloadBuild("linux", "cpu")
+            if (project.hasProperty("platform") && project["platform"] == "cu102") {
+                downloadBuild("linux", "cu102")
+            } else {
+                downloadBuild("linux", "cpu")
+            }
         } else {
             throw new IllegalStateException("Unknown Architecture " + System.properties['os.name'])
         }
