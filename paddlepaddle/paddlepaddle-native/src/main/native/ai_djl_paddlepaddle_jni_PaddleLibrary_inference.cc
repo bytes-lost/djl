@@ -32,7 +32,7 @@ JNIEXPORT jlong JNICALL Java_ai_djl_paddlepaddle_jni_PaddleLibrary_createAnalysi
   }
   config->SwitchUseFeedFetchOps(false);
   // optional: config->SwitchIrOptim(false); optimize performance
-  // config->EnableMKLDNN(); not supporting multi-thread
+  config->EnableMKLDNN(); // not supporting multi-thread
   // config->SetCpuMathLibraryNumThreads(); set to 1 for multi-thread
   return reinterpret_cast<uintptr_t>(config);
 }

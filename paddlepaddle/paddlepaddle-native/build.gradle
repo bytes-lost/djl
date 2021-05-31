@@ -44,11 +44,17 @@ task compileJNI {
         } else if (System.properties['os.name'].toLowerCase(Locale.ROOT).contains("mac")) {
             downloadBuild("osx", "cpu")
         } else if (System.properties['os.name'].toLowerCase(Locale.ROOT).contains("linux")) {
-            if (project.hasProperty("platform") && project["platform"] == "cu102") {
-                downloadBuild("linux", "cu102")
-            } else {
-                downloadBuild("linux", "cpu")
-            }
+            downloadBuild("linux", "cpu")
+        } else {
+            throw new IllegalStateException("Unknown Architecture " + System.properties['os.name'])
+        }
+    }
+}
+
+task compileJNIGPU() {
+    doFirst {
+        if (System.properties['os.name'].toLowerCase(Locale.ROOT).contains("linux")) {
+            downloadBuild("linux", "cu102")
         } else {
             throw new IllegalStateException("Unknown Architecture " + System.properties['os.name'])
         }
